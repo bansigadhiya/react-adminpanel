@@ -1,3 +1,17 @@
+:root{
+    --bs-primary-rgb : 85, 147, 149;
+    --bs-secondary-rgb : 181, 241, 244
+}
 .sidebar{
-    width: 280px;
+    width: 250px;
+    background-color: rgb(24, 57, 58);
+}
+.sidebar .menu ul li a{
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.navlink:hover,.active{
+    color: var(--bs-light) !important;
+    background-color: rgba(181, 241, 244,0.5);
+    border-radius: 5px;
 }
