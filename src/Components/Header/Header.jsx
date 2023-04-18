@@ -7,7 +7,7 @@ import './Header.css';
 function Header({ handleSidebarToggle }) {
   return (
     <>
-      <header className='py-2 bg-white'>
+      <header className='py-2 bg-white shadow-sm'>
         <div className="container-fluid">
           <div className="col">
             <div className="d-flex align-items-center">

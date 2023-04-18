@@ -1,0 +1,10 @@
+.greeting h6{
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.greeting p{
+    font-size: 13px;
+}
+.calender span,.calender .calender-icon,.cta-btn span{
+    font-size: 13px;
+}
