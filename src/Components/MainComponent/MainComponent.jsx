@@ -6,10 +6,10 @@ import Product from '../Products/Product';
 import Admin from '../Admin/Admin';
 import Setting from '../Setting/Setting';
 
-function MainComponent({ handleSidebarToggle }) {
+function MainComponent({ handleSidebarToggle , handle }) {
   return (
     <div className='bg-light vh-100'>
-      <Header handleSidebarToggle={handleSidebarToggle} />
+      <Header handleSidebarToggle={handleSidebarToggle} handle={handle}/>
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
           <Route path='/product' element={<Product />}></Route>

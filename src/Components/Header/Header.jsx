@@ -1,10 +1,11 @@
 import React from 'react'
-import { Bag, Bell, Flag, FlagFill, Fullscreen, Grid, GridFill, List, Moon, Search } from 'react-bootstrap-icons';
+import { Bag, Bell, Flag, FlagFill, Fullscreen, FullscreenExit, Grid, GridFill, List, Moon, Search } from 'react-bootstrap-icons';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import './Header.css';
 
-function Header({ handleSidebarToggle }) {
+function Header({ handleSidebarToggle, handle }) {
+  
   return (
     <>
       <header className='py-2 bg-white shadow-sm'>
@@ -46,9 +47,15 @@ function Header({ handleSidebarToggle }) {
                         </a>
                       </li>
                       <li className='px-2'>
-                        <a href="javascript:;" className='text-dark icon d-flex align-items-center justify-content-center rounded-circle'>
-                          <Fullscreen />
-                        </a>
+                        {
+                          handle.active == false ?
+                            <a href="javascript:;" className='text-dark icon d-flex align-items-center justify-content-center rounded-circle' onClick={handle.enter}>
+                              <Fullscreen />
+                            </a> :
+                            <a href="javascript:;" className='text-dark icon d-flex align-items-center justify-content-center rounded-circle' onClick={handle.exit}>
+                              <FullscreenExit />
+                            </a>
+                        }
                       </li>
                       <li className='px-2'>
                         <a href="javascript:;" className='text-dark icon d-flex align-items-center justify-content-center rounded-circle'>

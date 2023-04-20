@@ -1,9 +1,10 @@
 import React from 'react';
-import './Dashboard.css';
 import { Activity, Calendar2, Calendar2Fill, PlusCircle } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import './Dashboard.css';
 import { useState } from 'react';
+import DatePicker, { DateObject } from 'react-multi-date-picker';
 
 function OffCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
@@ -30,6 +31,12 @@ function OffCanvas({ name, ...props }) {
 }
 
 function Dashboard() {
+
+    const [values, setValues] = useState([
+        new DateObject().subtract(4, "days"),
+        new DateObject().add(4, "days")
+    ])
+
     return (
         <div className='container-fluid py-3'>
             <div className="d-flex align-items-center">
@@ -40,7 +47,11 @@ function Dashboard() {
                 <div className="col-6 d-flex align-items-center mx-2 justify-content-end pe-2">
                     <div className="calender d-flex align-items-center shadow-sm">
                         <div className="w-10  py-1 px-2 bg-white rounded-start">
-                            <span>1 jan 2022 to 31 dec 2022</span>
+                            <DatePicker
+                                value={values}
+                                onChange={setValues}
+                                range
+                            />
                         </div>
                         <div className="w-2 bg-primary py-1 px-2 rounded-end">
                             <Calendar2Fill className='text-white calender-icon' />
@@ -53,7 +64,7 @@ function Dashboard() {
                         </Button>
                     </div>
                     <div className="recentActivity">
-                        <OffCanvas placement={'end'} name={'end'}/>
+                        <OffCanvas placement={'end'} name={'end'} />
                     </div>
                 </div>
             </div>

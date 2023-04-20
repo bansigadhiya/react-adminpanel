@@ -12,6 +12,7 @@ function Sidebar({ hide }) {
     const handleDrop = () => {
         setDown(!down);
     }
+    
     return (
         <div className={hide ? 'sidebar p-2 bg-primary vh-100 hide' : 'sidebar p-2 bg-primary vh-100'}>
             <div className="logo p-2">

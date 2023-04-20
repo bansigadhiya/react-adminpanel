@@ -1,7 +1,7 @@
-:root{
+/* :root{
     --bs-primary-rgb : 85, 147, 149;
     --bs-secondary-rgb : 181, 241, 244
-}
+} */
 .sidebar{
     width: 250px;
     background-color: rgb(24, 57, 58);
