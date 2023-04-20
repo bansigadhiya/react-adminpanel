@@ -6,15 +6,18 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './Components/SignIn/SignIn';
+import store from './Store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-    <Routes>
-        <Route path='*' element={<App />}></Route>
-        <Route path='signin' element={<SignIn />}></Route>
-    </Routes>
-        
+        <Provider store={store}>
+            <Routes>
+                <Route path='*' element={<App />}></Route>
+                <Route path='signin' element={<SignIn />}></Route>
+            </Routes>
+        </Provider>
     </BrowserRouter>
 );
 

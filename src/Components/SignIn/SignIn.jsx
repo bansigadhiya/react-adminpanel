@@ -25,8 +25,12 @@ function SignIn() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        sessionStorage.setItem("userLogin",JSON.stringify(user));
-        navigate('/');
+        if(user.email !== '' && user.password !== ''){
+            sessionStorage.setItem("userLogin",JSON.stringify(user));
+            navigate('/')
+        }else{
+            navigate('/signin')
+        }
     }
 
     return (

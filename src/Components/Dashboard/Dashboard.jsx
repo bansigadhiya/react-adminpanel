@@ -1,17 +1,18 @@
-import React from 'react';
-import { Activity, Calendar2, Calendar2Fill, PlusCircle } from 'react-bootstrap-icons';
+import React, { useEffect } from 'react';
+import { Activity, Calendar2, Calendar2Fill, Plus, PlusCircle } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './Dashboard.css';
 import { useState } from 'react';
 import DatePicker, { DateObject } from 'react-multi-date-picker';
+import api from '../../Api/api';
 
 function OffCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    
     return (
         <>
             <Button className='bg-primary border-0 py-1' onClick={handleShow}>
@@ -37,6 +38,14 @@ function Dashboard() {
         new DateObject().add(4, "days")
     ])
 
+    const handleClick = () => {
+        api.get("/users").then((res) => {
+            console.log(res.data,"res");
+        }).catch((err) => {
+            console.log(err,"err");
+        })
+    }
+
     return (
         <div className='container-fluid py-3'>
             <div className="d-flex align-items-center">
@@ -46,7 +55,7 @@ function Dashboard() {
                 </div>
                 <div className="col-6 d-flex align-items-center mx-2 justify-content-end pe-2">
                     <div className="calender d-flex align-items-center shadow-sm">
-                        <div className="w-10  py-1 px-2 bg-white rounded-start">
+                        <div className="w-10 py-1 px-2 bg-white rounded-start">
                             <DatePicker
                                 value={values}
                                 onChange={setValues}
@@ -66,6 +75,9 @@ function Dashboard() {
                     <div className="recentActivity">
                         <OffCanvas placement={'end'} name={'end'} />
                     </div>
+                    <Button variant='info' onClick={() => handleClick()}>
+                        <Plus />
+                    </Button>
                 </div>
             </div>
         </div>
