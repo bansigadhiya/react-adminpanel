@@ -1,18 +1,38 @@
-import { USER_LOGIN } from "../Constant/Action.type"
+import { SIGNIN_FAIL, SIGNIN_SUCCESS, SIGNUP_FAIL, SIGNUP_SUCCESS } from '../Constant/Action.type';
 
 const initialState = {
-    users : []
+    users: null,
+    error: null
 }
 
-const UserReducer = (state = initialState,action) => {
-
-    switch(action.type){
-        case USER_LOGIN :
-            return state;
+const UserReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case SIGNUP_SUCCESS:
+            return {
+                users: action.payload,
+                error: null
+            };
             break;
-        default :
+        case SIGNUP_FAIL:
+            return {
+                users: null,
+                error: action.payload
+            }
+            break;
+        case SIGNIN_SUCCESS :
+            return{
+                users : action.payload,
+                error : null
+            }
+            break;
+        case SIGNIN_FAIL :
+            return{
+                users : null,
+                error : action.payload
+            }
+        default:
             return state;
     }
 }
 
-export default UserReducer;
+export default UserReducer

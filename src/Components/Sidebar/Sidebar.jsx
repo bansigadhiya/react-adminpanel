@@ -26,7 +26,7 @@ function Sidebar({ hide }) {
                     <ul className='list-unstyled'>
                         <Accordion defaultActiveKey="0">
                             <li className='pb-1'>
-                                <NavLink to='/' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink'>
+                                <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink'>
                                     <div className='list'>
                                         <Speedometer className='me-2' />
                                         <span>Dashboard</span>
@@ -43,7 +43,7 @@ function Sidebar({ hide }) {
                             </li>
                             <li className='pb-1'>
                                 <CustomToggle eventKey="0">
-                                    <NavLink to='/' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
+                                    <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
                                         <div className='list'>
                                             <PeopleFill className='me-2' />
                                             <span>Users</span>
@@ -82,7 +82,7 @@ function Sidebar({ hide }) {
                             </li>
                             <li className='pb-1'>
                                 <CustomToggle eventKey="1">
-                                    <NavLink to='/' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
+                                    <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
                                         <div className='list'>
                                             <FileEarmarkFill className='me-2' />
                                             <span>Pages</span>
@@ -100,7 +100,7 @@ function Sidebar({ hide }) {
                                     <div className="dropdownMenu ps-3">
                                         <ul className='list-unstyled'>
                                             <li>
-                                                <NavLink to='/admin' className='p-2 text-decoration-none text-secondary d-flex align-items-center'>
+                                                <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex align-items-center'>
                                                     <div className='list'>
                                                         <FileEarmarkFill className='me-2' />
                                                         <span>Page 1</span>
@@ -108,7 +108,7 @@ function Sidebar({ hide }) {
                                                 </NavLink>
                                             </li>
                                             <li>
-                                                <NavLink to='/user' className='text-decoration-none text-secondary d-flex align-items-center p-2'>
+                                                <NavLink to='/dashboard' className='text-decoration-none text-secondary d-flex align-items-center p-2'>
                                                     <div className='list'>
                                                         <FileEarmarkFill className='me-2' />
                                                         <span>Page 2</span>

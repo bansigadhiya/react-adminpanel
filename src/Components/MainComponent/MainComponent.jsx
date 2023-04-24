@@ -11,7 +11,7 @@ function MainComponent({ handleSidebarToggle , handle }) {
     <div className='bg-light vh-100'>
       <Header handleSidebarToggle={handleSidebarToggle} handle={handle}/>
         <Routes>
-          <Route path='/' element={<Dashboard />}></Route>
+          <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/product' element={<Product />}></Route>
           <Route path='/admin' element={<Admin />}></Route>
           <Route path='/setting' element={<Setting />}></Route>

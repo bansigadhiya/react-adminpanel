@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './Components/SignIn/SignIn';
 import store from './Store';
 import { Provider } from 'react-redux';
+import SignUp from './Components/SignUp/SignUp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,8 @@ root.render(
         <Provider store={store}>
             <Routes>
                 <Route path='*' element={<App />}></Route>
-                <Route path='signin' element={<SignIn />}></Route>
+                <Route path='/' element={<SignIn />}></Route>
+                <Route path='/signup' element={<SignUp />}></Route>
             </Routes>
         </Provider>
     </BrowserRouter>

@@ -6,6 +6,7 @@ import './Dashboard.css';
 import { useState } from 'react';
 import DatePicker, { DateObject } from 'react-multi-date-picker';
 import api from '../../Api/api';
+import { useNavigate } from 'react-router-dom';
 
 function OffCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
@@ -38,14 +39,6 @@ function Dashboard() {
         new DateObject().add(4, "days")
     ])
 
-    const handleClick = () => {
-        api.get("/users").then((res) => {
-            console.log(res.data,"res");
-        }).catch((err) => {
-            console.log(err,"err");
-        })
-    }
-
     return (
         <div className='container-fluid py-3'>
             <div className="d-flex align-items-center">
@@ -75,11 +68,9 @@ function Dashboard() {
                     <div className="recentActivity">
                         <OffCanvas placement={'end'} name={'end'} />
                     </div>
-                    <Button variant='info' onClick={() => handleClick()}>
-                        <Plus />
-                    </Button>
                 </div>
             </div>
+            
         </div>
     )
 }
