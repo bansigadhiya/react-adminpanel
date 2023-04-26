@@ -23,8 +23,8 @@ export const SignUpwithemailFirebase = (email,password) => {
 
     return dispatch => {
         createUserWithEmailAndPassword(auth,email,password).then((userCredential) => {
-            console.log(userCredential.user,"usercredential");
             dispatch(SignUpSuccess(userCredential.user))
+            sessionStorage.setItem("userDetail",JSON.stringify(userCredential.user))
         }).catch((err) => {
             console.log(err.code,"err");
             dispatch(SignUpFail(err.code))
@@ -50,8 +50,8 @@ export const SignInwithemailFirebase = (email,password) => {
 
     return dispatch => {
         signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
-            console.log(userCredential.user,"user");
-            dispatch(SignInSuccess(userCredential.user))
+            dispatch(SignInSuccess(userCredential.user));
+            sessionStorage.setItem("userDetail",JSON.stringify(userCredential.user))
         }).catch((err) => {
             console.log(err.code,"err");
             dispatch(SignInFail(err.code))
@@ -64,6 +64,7 @@ export const SignInWithGoogleFirebase = () => {
     return dispatch => {
         signInWithPopup(auth,provider).then((userCredential) => {
             dispatch(SignInSuccess(userCredential.user))
+            sessionStorage.setItem("userDetail",JSON.stringify(userCredential.user))
         }).catch((err) => {
             dispatch(SignInFail(err.code))
         })

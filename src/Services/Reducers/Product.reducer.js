@@ -1,9 +1,12 @@
-import { CREATE_PRODUCT, GETINFO_PRODUCT, VIEW_PRODUCT } from "../Constant/Action.type"
+import { CREATE_PRODUCT, GETINFO_PRODUCT, PRODUCT_COUNT, VIEW_PRODUCT } from "../Constant/Action.type"
 
 const initialState = {
     product : [],
     error : null,
-    productInfo : null
+    productInfo : null,
+    productcount : 0,
+    totalPrice : 0,
+    editProduct : false
 }
 
 const ProductReducer = (state = initialState,action) => {
@@ -16,16 +19,31 @@ const ProductReducer = (state = initialState,action) => {
             return {
                 product : action.payload,
                 error : null,
-                productInfo : null
+                productInfo : null,
+                productcount : 0,
+                totalPrice : action.payload.reduce((acc,currentValue) => {
+                    return acc + parseInt(currentValue.price)
+                },0),
+                editProduct : false
             }
             break;
         case GETINFO_PRODUCT : 
             return{
                 ...state,
                 productInfo : action.payload,
-                error : null
+                error : null,
+                productcount : 0,
+                editProduct : true
             }
             break;
+        case PRODUCT_COUNT : 
+            return{
+                ...state,
+                productcount : action.payload,
+                productInfo : null,
+                error : null,
+                editProduct : false
+            }
         default :
             return state;
     }

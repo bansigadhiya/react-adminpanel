@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Activity, Calendar2, Calendar2Fill, Plus, PlusCircle } from 'react-bootstrap-icons';
+import { Activity, Boxes, Calendar2, Calendar2Fill, Plus, PlusCircle } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './Dashboard.css';
@@ -7,6 +7,8 @@ import { useState } from 'react';
 import DatePicker, { DateObject } from 'react-multi-date-picker';
 import api from '../../Api/api';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch , useSelector } from 'react-redux';
+import { productCount, productCountAsync } from '../../Services/Actions/Product.action';
 
 function OffCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
@@ -39,6 +41,18 @@ function Dashboard() {
         new DateObject().add(4, "days")
     ])
 
+    const dispatch = useDispatch();
+
+    const productCount = () => {
+        dispatch(productCountAsync())
+    }
+
+    const {productcount} = useSelector((state) => state.ProductReducer);
+
+    useEffect(() => {
+        productCount()
+    },[])
+
     return (
         <div className='container-fluid py-3'>
             <div className="d-flex align-items-center">
@@ -70,6 +84,25 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+            <section className='py-3'>
+                <div className="d-flex">
+                    <div className="col-3 px-2">
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0 text-center">
+                            <Boxes className='mx-auto text-primary'/>
+                            <h6 className='mb-0 mt-3 fw-bold'>{`${productcount} Product`}</h6>
+                        </div>
+                    </div>
+                    <div className="col-3 px-2">
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>
+                    </div>
+                    <div className="col-3 px-2">
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>
+                    </div>
+                    <div className="col-3 px-2">
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>
+                    </div>
+                </div>
+            </section>
             
         </div>
     )

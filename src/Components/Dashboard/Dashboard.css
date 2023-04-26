@@ -42,3 +42,6 @@
     border: solid var(--bs-primary) !important;
     border-width: 0 2px 2px 0 !important;
 }
+.card svg{
+    font-size: 60px !important;
+}

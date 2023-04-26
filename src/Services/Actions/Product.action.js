@@ -1,4 +1,4 @@
-import { CREATE_PRODUCT, DELETE_PRODUCT, GETINFO_PRODUCT, VIEW_PRODUCT } from "../Constant/Action.type";
+import { CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GETINFO_PRODUCT, PRODUCT_COUNT, VIEW_PRODUCT } from "../Constant/Action.type";
 import api from '../../Api/api';
 
 export const CreateProduct = (data) => {
@@ -12,7 +12,7 @@ export const CreateProductAync = (data) => {
 
     return async dispatch => {
         await api.post("/products",data).then((res) => {
-            dispatch(CreateProduct(res.data));
+            dispatch(ViewProductAsync());
         }).catch((err) => {
             console.log(err,"err");
         })
@@ -67,6 +67,42 @@ export const GetEditProductAsync = (id) => {
         await api.get(`/products/${id}`).then((res) => {
             dispatch(GetProductInfo(res.data))
             // console.log(res.data/);
+        }).catch((err) => {
+            console.log(err,"err");
+        })
+    }
+}
+export const EditProduct = (data) => {
+    return {
+        type : EDIT_PRODUCT,
+        payload : data
+    }
+}
+
+export const EditProductAcync = (data) => {
+
+    return async dispatch => {
+        await api.put(`/products/${data.id}`,data).then(() => {
+            dispatch(ViewProductAsync())
+        })
+    }
+}
+
+export const productCount = (data) => {
+    return {
+        type : PRODUCT_COUNT,
+        payload : data
+    }
+}
+
+export const productCountAsync = () => {
+
+    return async dispatch => {
+        await api.get(`/products`).then((res) => {
+            const data = res.data;
+            const count = data.length 
+            console.log(count);
+            dispatch(productCount(count))
         }).catch((err) => {
             console.log(err,"err");
         })

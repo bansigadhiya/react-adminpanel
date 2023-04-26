@@ -3,7 +3,6 @@
     --bs-secondary-rgb: 181, 241, 244 !important;
     --bs-table-striped-bg: rgba(181, 241, 244,1) !important;
 }
-
 .table-striped>tbody>tr:nth-of-type(odd)>* {
     --bs-table-accent-bg: rgba(85,147,149,0.2) ;
 }
@@ -18,9 +17,15 @@
 .table>:not(caption)>*>*{
     border-bottom: 0;
 }
-.table td .btn{
+.table tbody tr td,.table tfoot tr td{
     font-size: 14px;
 }
+.table td .btn{
+    font-size: 13px;
+}
 .table td .btn svg{
-    font-size: 12px;
+    font-size: 11px;
+}
+.table tfoot tr{
+    border-top: 1px solid var(--bs-primary);
 }

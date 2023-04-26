@@ -1,18 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import './AddProduct.css'
-import { useDispatch } from 'react-redux';
-import { CreateProductAync } from '../../Services/Actions/Product.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { EditProductAcync } from '../../Services/Actions/Product.action';
 
-function AddProduct() {
-
-    const [product, setProduct] = useState({
-        name: '',
-        price: '',
-        detail: '',
-        category : ''
-    })
+function EditProduct() {
+    const {productInfo} = useSelector((state) => state.ProductReducer);
+    const [product, setProduct] = useState(productInfo)
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -24,24 +18,24 @@ function AddProduct() {
     }
 
     const dispatch = useDispatch();
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const date = new Date().toLocaleString();
-        console.log({...product,dateDay : date},"product");
-        dispatch(CreateProductAync({...product,dateDay : date}));
+        console.log({...product, dateDay: date }, "product");
+        dispatch(EditProductAcync({...product, dateDay: date }));
         setProduct({
             name: '',
             price: '',
             detail: '',
-            category : ''
+            category: ''
         })
     }
 
     return (
         <div className='my-5 mx-auto product-form'>
             <Form className='p-2 w-50 mx-auto border p-3 rounded shadow-sm bg-white' onSubmit={(e) => { handleSubmit(e) }}>
-                <h5 className='text-primary'>Add new product here..</h5>
+                <h5 className='text-primary'>Edit product here..</h5>
                 <hr></hr>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Product name</Form.Label>
@@ -64,11 +58,11 @@ function AddProduct() {
                 </Form.Group>
 
                 <Button type="submit" className='btn bg-primary btn btn-success rounded-1 mt-2'>
-                    Submit
+                    Update
                 </Button>
             </Form>
         </div>
     )
 }
 
-export default AddProduct
+export default EditProduct
