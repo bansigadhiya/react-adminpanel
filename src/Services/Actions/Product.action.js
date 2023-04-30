@@ -66,7 +66,6 @@ export const GetEditProductAsync = (id) => {
     return async dispatch => {
         await api.get(`/products/${id}`).then((res) => {
             dispatch(GetProductInfo(res.data))
-            // console.log(res.data/);
         }).catch((err) => {
             console.log(err,"err");
         })
@@ -101,7 +100,6 @@ export const productCountAsync = () => {
         await api.get(`/products`).then((res) => {
             const data = res.data;
             const count = data.length 
-            console.log(count);
             dispatch(productCount(count))
         }).catch((err) => {
             console.log(err,"err");

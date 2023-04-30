@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Activity, Boxes, Calendar2, Calendar2Fill, Plus, PlusCircle } from 'react-bootstrap-icons';
+import { Activity, Boxes, Calendar2, Calendar2Fill, Person, Plus, PlusCircle, Tag } from 'react-bootstrap-icons';
 import { Button } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './Dashboard.css';
@@ -8,7 +8,7 @@ import DatePicker, { DateObject } from 'react-multi-date-picker';
 import api from '../../Api/api';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch , useSelector } from 'react-redux';
-import { productCount, productCountAsync } from '../../Services/Actions/Product.action';
+import { productCount, productCountAsync, tprice } from '../../Services/Actions/Product.action';
 
 function OffCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
@@ -47,10 +47,11 @@ function Dashboard() {
         dispatch(productCountAsync())
     }
 
-    const {productcount} = useSelector((state) => state.ProductReducer);
+    const {totalPrice,productcount} = useSelector((state) => state.ProductReducer)
+    const {users} = useSelector((state) => state.UserReducer);
 
     useEffect(() => {
-        productCount()
+        productCount();
     },[])
 
     return (
@@ -93,10 +94,16 @@ function Dashboard() {
                         </div>
                     </div>
                     <div className="col-3 px-2">
-                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0 text-center">
+                            <Tag className='mx-auto text-primary' />
+                            <h6 className='mb-0 mt-3 fw-bold'>{`${totalPrice} Rs.`}</h6>
+                        </div>
                     </div>
                     <div className="col-3 px-2">
-                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>
+                        <div className="card bg-white rounded-1 shadow-sm p-4 border-0 text-center">
+                            <Person className='mx-auto text-primary'/>
+                            <h6 className='mb-0 mt-3 fw-bold'>{`${users.email}`}</h6>
+                        </div>
                     </div>
                     <div className="col-3 px-2">
                         <div className="card bg-white rounded-1 shadow-sm p-4 border-0"></div>

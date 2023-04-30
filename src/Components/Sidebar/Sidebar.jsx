@@ -12,7 +12,7 @@ function Sidebar({ hide }) {
     const handleDrop = () => {
         setDown(!down);
     }
-    
+
     return (
         <div className={hide ? 'sidebar p-2 bg-primary vh-100 hide' : 'sidebar p-2 bg-primary vh-100'}>
             <div className="logo p-2">
@@ -81,43 +81,12 @@ function Sidebar({ hide }) {
                                 </Accordion.Collapse>
                             </li>
                             <li className='pb-1'>
-                                <CustomToggle eventKey="1">
-                                    <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
-                                        <div className='list'>
-                                            <FileEarmarkFill className='me-2' />
-                                            <span>Pages</span>
-                                        </div>
-                                        <div className='arrow'>
-                                            {
-                                                down ?
-                                                    <ChevronDown /> :
-                                                    <ChevronRight />
-                                            }
-                                        </div>
-                                    </NavLink>
-                                </CustomToggle>
-                                <Accordion.Collapse eventKey="1">
-                                    <div className="dropdownMenu ps-3">
-                                        <ul className='list-unstyled'>
-                                            <li>
-                                                <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex align-items-center'>
-                                                    <div className='list'>
-                                                        <FileEarmarkFill className='me-2' />
-                                                        <span>Page 1</span>
-                                                    </div>
-                                                </NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink to='/dashboard' className='text-decoration-none text-secondary d-flex align-items-center p-2'>
-                                                    <div className='list'>
-                                                        <FileEarmarkFill className='me-2' />
-                                                        <span>Page 2</span>
-                                                    </div>
-                                                </NavLink>
-                                            </li>
-                                        </ul>
+                                <NavLink to='/dashboard' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink' onClick={() => handleDrop()}>
+                                    <div className='list'>
+                                        <FileEarmarkFill className='me-2' />
+                                        <span>Pages</span>
                                     </div>
-                                </Accordion.Collapse>
+                                </NavLink>
                             </li>
                             <li className='pb-1'>
                                 <NavLink to='/setting' className='p-2 text-decoration-none text-secondary d-flex justify-content-between align-items-center navlink'>
